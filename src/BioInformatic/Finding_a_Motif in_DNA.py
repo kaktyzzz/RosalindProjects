@@ -21,7 +21,7 @@
 # 2 4 10
 
 
-dirName = 'InOut\\'
+dirName = 'InOut/'
 fileName = 'input'
 fIn = open(dirName + fileName + '.txt', 'r')
 
@@ -42,6 +42,6 @@ while count <= length:
         count = findex+1
 
 for p in lst:
-    print(p, end=' ')
+    print(p, end = ' ')
 
 fIn.close()
