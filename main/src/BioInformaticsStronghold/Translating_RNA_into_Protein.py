@@ -18,25 +18,27 @@
 from main.src.HelperFunctions.InOutHelper import *
 from main.src.HelperFunctions.BioHelper import *
 
-fileName = 'input'
+
+fileName = 'rosalind_prot'
 fIn = open(getFullPathInput(fileName), 'r')
 fOut = open(getFullPathOutput(fileName), 'w')
 
-rna = 'AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'
-#rna = fIn.readline().strip()
-codonDict = getRNACodonTable()
-for i, c in enumerate(rna):
-    codon = ''
-    codon += c
-    if ((i+1) % 3 != 0):
 
-        print(i)
-    else:
+#rna = 'AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'
+rna = fIn.readline().strip()
+codonDict = getRNACodonTable()
+codon = ''
+for i, c in enumerate(rna):
+    codon += c
+    if ((i+1) % 3 == 0):
         print(codon)
         if codon in codonDict:
-            fOut.write(codonDict[codon])
+            if codonDict[codon] != STOP_ANTICODON:
+                fOut.write(codonDict[codon])
+            else:
+                print(STOP_ANTICODON)
         else:
-            print('Error')
+            print('Unknown codon:' + codon)
         codon = ''
 
 fIn.close()

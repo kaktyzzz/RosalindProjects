@@ -2,6 +2,8 @@
 import os
 from main.src.HelperFunctions.InOutHelper import *
 
+STOP_ANTICODON = 'Stop'
+
 def getRNACodonTable():
     f = open(getFullPathOther('rna_codon_table.txt'), 'r')
     resDict = {}
