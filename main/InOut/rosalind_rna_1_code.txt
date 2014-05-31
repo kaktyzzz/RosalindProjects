@@ -1,0 +1,16 @@
+dirName = 'InOut\\'
+fileName = 'rosalind_rna'
+fIn = open(dirName + fileName + '.txt', 'r')
+fOut = open(dirName + fileName + '_out.txt', 'w')
+s = fIn.readline()
+
+
+ntDict = {ord('T'):'U'}
+
+res = s.translate(ntDict)
+
+fOut.write(res+'\n')
+print(res)
+
+fIn.close()
+fOut.close()
