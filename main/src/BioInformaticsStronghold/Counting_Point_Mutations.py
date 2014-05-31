@@ -16,7 +16,7 @@
 #
 # 7
 
-from main.src.InOut import *
+from main.src.HelperFunctions.InOutHelper import *
 fileName = 'input'
 fIn = open(getFullPathInput(fileName), 'r')
 s = [fIn.readline().strip(), fIn.readline().strip()]

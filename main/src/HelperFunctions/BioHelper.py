@@ -1,4 +1,14 @@
 # Special Bioinformatics function
+import os
+from main.src.HelperFunctions.InOutHelper import *
+
+def getRNACodonTable():
+    f = open(getFullPathOther('rna_codon_table.txt'), 'r')
+    resDict = {}
+    for line in f:
+        key, value = line.split()
+        resDict[key] = value
+    return  resDict
 
 def readFASTA(fp):
     name, seq = None, []

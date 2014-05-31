@@ -18,7 +18,7 @@
 # 20 12 17 21
 #===============================================================================
 
-from main.src.InOut import *
+from main.src.HelperFunctions.InOutHelper import *
 
 fileName = 'input'
 fIn = open(getFullPathInput(fileName), 'r')

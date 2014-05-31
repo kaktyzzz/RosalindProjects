@@ -54,7 +54,7 @@
 # AAN
 # AAA
 
-from main.src.InOut import *
+from main.src.HelperFunctions.InOutHelper import *
 
 fileName = 'rosalind_lexv'
 fIn = open(getFullPathInput(fileName), 'r')

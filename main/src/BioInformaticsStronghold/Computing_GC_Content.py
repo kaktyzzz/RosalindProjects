@@ -25,8 +25,8 @@
 #
 # Rosalind_0808
 # 60.919540
-from main.src.InOut import *
-from main.src.BioFunction import *
+from main.src.HelperFunctions.InOutHelper import *
+from main.src.HelperFunctions.BioHelper import *
 
 fileName = 'input'
 fIn = open(getFullPathInput(fileName), 'r')

@@ -20,7 +20,7 @@
 # -2 1
 # 2 -1
 # 2 1
-from main.src.InOut import *
+from main.src.HelperFunctions.InOutHelper import *
 
 fileName = 'output'
 fOut = open(getFullPathOutput(fileName), 'w')

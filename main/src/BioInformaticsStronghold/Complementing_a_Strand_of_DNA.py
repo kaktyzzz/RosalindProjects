@@ -16,7 +16,7 @@
 # 
 # ACCGGGTTTT
 #===============================================================================
-from main.src.InOut import *
+from main.src.HelperFunctions.InOutHelper import *
 
 fileName = 'rosalind_revc'
 fIn = open(getFullPathInput(fileName), 'r')

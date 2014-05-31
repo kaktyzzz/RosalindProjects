@@ -46,8 +46,8 @@
 # G: 1 1 6 3 0 1 0 0
 # T: 1 5 0 0 0 1 1 6
 
-from main.src.InOut import *
-from main.src.BioFunction import *
+from main.src.HelperFunctions.InOutHelper import *
+from main.src.HelperFunctions.BioHelper import *
 
 fileName = 'input'
 fIn = open(getFullPathInput(fileName), 'r')

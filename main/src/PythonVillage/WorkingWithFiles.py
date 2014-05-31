@@ -1,4 +1,4 @@
-from  main.src.InOut import *
+from  main.src.HelperFunctions.InOutHelper import *
 
 fileName = 'rosalind_ini5'
 
