@@ -2,7 +2,10 @@
 import os
 from main.src.HelperFunctions.InOutHelper import *
 
+import urllib.request
+
 STOP_ANTICODON = 'Stop'
+URL_UNIPROT = 'http://www.uniprot.org/uniprot/'
 
 def getRNACodonTable():
     f = open(getFullPathOther('rna_codon_table.txt'), 'r')
@@ -22,3 +25,7 @@ def readFASTA(fp):
         else:
             seq.append(line)
     if name: yield (name, ''.join(seq))
+
+def getUniProtFASTA(ProtID):
+    res = urllib.request.urlopen(URL_UNIPROT + ProtID + '.fasta').read().decode('utf-8')
+    return res
