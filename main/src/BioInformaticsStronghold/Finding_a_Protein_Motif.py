@@ -37,7 +37,7 @@ fileName = 'rosalind_mprt'
 fIn = open(getFullPathInput(fileName), 'r')
 fOut = open(getFullPathOutput(fileName), 'w')
 
-p = re.compile('N[^P][ST][^P]')
+p = re.compile('(?=(N[^P][ST][^P]))')
 
 for line in fIn:
     for name, seq in readFASTA(getUniProtFASTA(line.strip()).split('\n')):
