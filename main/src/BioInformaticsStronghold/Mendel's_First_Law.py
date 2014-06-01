@@ -21,21 +21,72 @@
 #
 # 0.78333
 
-population = [2, 2, 2]
-sumPop = 0
-for p in population:
-    sumPop += p
+# population = [30, 23, 20]
+# combination = [[1.0, 1.0, 1.0], [1.0, 0.75, 0.5], [1.0, 0.5, 0.0]]
+# sumPop = 0
+# for p in population:
+#     sumPop += p
+#
+# class Tree:
+#     def __init__(self, val, type, childrens):
+#         self.val = val
+#         self.type = type
+#         self.childrens = childrens
+#
+#     def print(tree):
+#         print(tree.val, tree.type)
+#         for i in tree.childrens:
+#             Tree.print(i)
+#
+#     def mult(tree):
+#         global prob
+#
+#         for i in tree.childrens:
+#             if tree.type != -1:
+#                 t, t1 = tree.val
+#                 t *= i.val[0]
+#                 t1 *= i.val[1]
+#                 i.val = (t, t1)
+#                 prob += (t / t1) * combination[tree.type][i.type]
+#             Tree.mult(i)
+#
+#
+# probability = Tree((1, 1), -1, [])
+#
+# lastChildrens = []
+# for r in range(0, 2):
+#     if r == 0:
+#         for pos, c in enumerate(population):
+#             temp = Tree((c, sumPop), pos, [])
+#             lastChildrens = probability.childrens
+#             probability.childrens.append(temp)
+#     else:
+#         for child in lastChildrens:
+#             ch, z = child.val
+#             for pos, i in enumerate(population):
+#                 c = ch
+#                 if (child.type == pos):
+#                     c -= 1
+#                 temp = Tree((c, z-1), pos, [])
+#                 child.childrens.append(temp)
+#
+# prob = 0;
+# Tree.mult(probability)
+# Tree.print(probability)
+#
+# print('%0.6f'%prob)
 
-class Tree:
-    def __init__(self, val, children):
-        self.val = val
-        self.children = children
+# Эта хрень не работает! =(
 
-
-probability
-for r in range(0,2):
-    if r == 0:
-        temp = {(c, sumPop) for c in population}
-        probability[r] = temp
-    else:
-        temp = [ 1.0 for  in probability[r-1]]
+list = [29, 23, 18]
+k, m, n = list
+population = k + m + n
+prob = (1.0 * k * (k-1)) / (population *(population-1))
+prob += (1.0 * k * m) / (population *(population-1))
+prob += (1.0 * k * n) / (population *(population-1))
+prob += (1.0 * m * k) / (population *(population-1))
+prob += (0.75 * m * (m-1)) / (population *(population-1))
+prob += (0.5 * m * n) / (population *(population-1))
+prob += (1.0 * n * k) / (population *(population-1))
+prob += (0.5 * n * m) / (population *(population-1))
+print('%.5f'%prob)
