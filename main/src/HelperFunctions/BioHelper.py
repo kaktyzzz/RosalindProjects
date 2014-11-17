@@ -7,6 +7,30 @@ import urllib.request
 STOP_ANTICODON = 'Stop'
 URL_UNIPROT = 'http://www.uniprot.org/uniprot/'
 
+def comp(dna):
+    ntType = ['A', 'C', 'G', 'T']
+    complDict = dict(zip(ntType, ntType[::-1]))
+    result = ''.join(complDict[nt] for nt in dna[::-1])
+    return result
+
+def RNAtoDNA(rna):
+    dna = ''
+    for a in rna:
+        if a == 'u' or a == 'U':
+            dna += 'T'
+        else:
+            dna += a
+    return dna
+
+def DNAtoRNA(dna):
+    rna = ''
+    for a in dna:
+        if a == 'T' or a == 't':
+            rna += 'U'
+        else:
+            rna += a
+    return rna
+
 def getRNACodonTable():
     f = open(getFullPathOther('rna_codon_table.txt'), 'r')
     resDict = {}
@@ -14,6 +38,25 @@ def getRNACodonTable():
         key, value = line.split()
         resDict[key] = value
     return  resDict
+
+def getMassTable():
+    f = open(getFullPathOther('mass.txt'), 'r')
+    resDict = {}
+    for line in f:
+        key, value = line.split()
+        resDict[key] = int(value)
+    return  resDict
+
+def getMassPeptides(pep):
+    massTable = getMassTable()
+    mass = 0
+    for p in pep:
+        if massTable.get(p) != None:
+            if p == '':
+                mass += 0
+            else:
+                mass += massTable[p]
+    return mass
 
 def readFASTA(fp):
     name, seq = None, []
