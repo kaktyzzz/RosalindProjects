@@ -14,21 +14,13 @@ def comp(dna):
     return result
 
 def RNAtoDNA(rna):
-    dna = ''
-    for a in rna:
-        if a == 'u' or a == 'U':
-            dna += 'T'
-        else:
-            dna += a
+    ntDict = {ord('U'):'T'}
+    dna = rna.translate(ntDict)
     return dna
 
 def DNAtoRNA(dna):
-    rna = ''
-    for a in dna:
-        if a == 'T' or a == 't':
-            rna += 'U'
-        else:
-            rna += a
+    ntDict = {ord('T'):'U'}
+    rna = dna.translate(ntDict)
     return rna
 
 def getRNACodonTable():

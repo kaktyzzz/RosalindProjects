@@ -2,6 +2,7 @@ import platform
 import os
 
 dirPathLst = ['..', '..','InOut']
+# dirPathLst = ['..', 'InOut']
 type = '.txt'
 outPrefix = '_out'
 dirPath = ''.join(s + os.sep for s in dirPathLst);

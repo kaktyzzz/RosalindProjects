@@ -19,10 +19,10 @@
 from main.src.HelperFunctions.InOutHelper import *
 
 fileName = 'rosalind_revc'
-fIn = open(getFullPathInput(fileName), 'r')
-fOut = open(getFullPathOutput(fileName), 'w')
+# fIn = open(getFullPathInput(fileName), 'r')
+# fOut = open(getFullPathOutput(fileName), 'w')
 #s = fIn.readline().strip()
-s = 'AAAACCCGGT'
+s = 'GATTACA'
 
 ntType = ['A', 'C', 'G', 'T']
 complDict = dict(zip(ntType, ntType[::-1]))
@@ -31,7 +31,7 @@ complDict = dict(zip(ntType, ntType[::-1]))
 result = ''.join(complDict[nt] for nt in s[::-1])
  
 print(result)
-fOut.write(result+'\n')
-      
-fIn.close()
-fOut.close()
+# fOut.write(result+'\n')
+#
+# fIn.close()
+# fOut.close()
