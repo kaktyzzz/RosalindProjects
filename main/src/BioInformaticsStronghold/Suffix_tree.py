@@ -45,7 +45,7 @@ def go(st, l, r):
     global t
 
     while l < r:
-        if st.pos == len(t[st.v]):
+        if st.pos == t[st.v].length():
             st = state(t[st.v].getnext(s[l]), 0)
             if st.v == -1:
                 return st
@@ -71,8 +71,14 @@ def split(st):
     sz += 1
     id = sz
     t[id] = node(v.l, v.l+st.pos, v.par)
-    t[v.par].getnext(s[v.l]) = id
-    t[id].getnext(s[v.l+st.pos]) = st.v
+
+    # t[v.par].getnext(s[v.l]) = id
+    # t[id].getnext(s[v.l+st.pos]) = st.v
+    if t[v.par].next.get(s[v.l]) != None:
+        t[v.par].next[s[v.l]] = id
+    if t[id].next.get(s[v.l + st.pos]) != None:
+        t[id].next[s[v.l + st.pos]] = st.v
+
     t[st.v].par = id
     t[st.v].l += st.pos
     return id
@@ -92,6 +98,7 @@ def tree_extend(pos):
     global ptr
     global sz
     global s
+    global n
 
     while 1:
         nptr = go(ptr, pos, pos + 1)
@@ -102,17 +109,18 @@ def tree_extend(pos):
         sz += 1
         leaf = sz
         t[leaf] = node(pos, n, mid)
-        t[mid].get(s[pos]) = leaf
+        if t[mid].next.get(s[pos]) != None:
+            t[mid].next[s[pos]] = leaf
 
         ptr.v = get_link(mid)
-        ptr.pos = len(t[ptr.v])
+        ptr.pos = t[ptr.v].length()
         if mid == False:
             break;
 
 
 s = "abcabc"
 
-sz = 1;
+sz = 1
 
 
 for i in range(0, len(s)):
