@@ -39,10 +39,12 @@ class SuffixTree:
 
     def __display_all_suffix(self, subroot, suffix_s_prefix, level = 0):
         if len(subroot.branches) == 0:
-            print suffix_s_prefix, level
+            if subroot.substr == "":
+                level -= 1
+            print(suffix_s_prefix, level)
             return
         for (substr, node) in subroot.branches.items():
-                self.__display_all_suffix(node, suffix_s_prefix + substr, level + 1)
+            self.__display_all_suffix(node, suffix_s_prefix + substr, level + 1)
 
 stree = SuffixTree("abcabb")
 stree.display_all_suffix()
