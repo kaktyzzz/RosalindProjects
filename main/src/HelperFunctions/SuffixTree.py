@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class SuffixTree:
     def __init__(self, str):
         self.root = self.__build_suffix_tree(str)
@@ -11,17 +12,32 @@ class SuffixTree:
     def __insert_into_tree(self, subroot, suffix, start):
         prefix_len = len(subroot.substr)
         new_suffix = str(suffix[prefix_len:])
-        if(len(subroot.branches) == 0):
+        if(len(subroot.branches) == 0):  #Вставляем в чистый узел суффикс
             left_child = self.Node(subroot.start, "")
             right_child = self.Node(start, new_suffix)
             subroot.branches[""] = left_child
             subroot.branches[new_suffix] = right_child
         else:
             for (substr, node) in subroot.branches.items():
-                if len(substr) > 0 and new_suffix.startswith(substr):
-                    self.__insert_into_tree(node, new_suffix, start)
-                    break
-            else:
+                if len(substr) > 0:
+                    if new_suffix.startswith(substr): #идем дальше по дереву если префикс совпадает с ребром(substr)
+                        self.__insert_into_tree(node, new_suffix, start)
+                        break
+                    else:
+                        i = 1 #если имеется общий префикс
+                        while new_suffix.startswith(substr[:i]):
+                            i += 1
+                        if i > 1:
+                            #разрываем узел
+                            i -= 1
+                            new_child = self.Node(start, substr[:i])
+                            subroot.branches[substr[:i]] = new_child
+                            subroot.branches.pop(substr, None)
+                            self.__insert_into_tree(new_child, new_suffix, start)
+                            node.substr = substr[i:]
+                            new_child.branches[node.substr] = node
+                            break
+            else:   #если нет совпадения ни с одним потомком, тупо вставляем
                 new_child = self.Node(start, new_suffix)
                 subroot.branches[new_suffix] = new_child
 
